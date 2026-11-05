@@ -7,6 +7,7 @@ public  non-sealed class WhatsApp implements Envio {
         System.out.println("Código: " + cupom.codigo());
         System.out.println("Desconto: " + cupom.desconto() + "%");
         System.out.println("Validade: " + cupom.validade());
+        System.out.println(cupom.resumo());
 
     }
 

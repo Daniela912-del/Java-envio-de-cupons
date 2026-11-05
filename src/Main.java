@@ -16,17 +16,15 @@ public class Main {
         Cupom cupom = new Cupom(
                 "LOJA20",
                 20,
-                "30/11/2026"
+                "30/11/2026",
+                Status.ATIVO
+
         );
         // Polimorfismo
-        Envio[] canais = {
-                new Email(),
-                new WhatsApp(),
-                new SMS()
-        };
+        CanalEnvio[] canais = CanalEnvio.values();
 
         // Envio pelos canais
-        for (Envio canal : canais) {
+        for (CanalEnvio canal : canais) {
             canal.enviar(cupom);
             System.out.println("=============================");
         }
@@ -42,7 +40,22 @@ public class Main {
         System.out.println("Valor original: R$ " + valorProduto);
         System.out.println("Desconto: R$ " + valorDesconto);
         System.out.println("Valor Final: R$ " + valorFinal);
+        System.out.println(cupom.status().getDescricao());
+    }
+
+    private enum CanalEnvio {
+        EMAIL(new Email()),
+        WHATSAPP(new WhatsApp()),
+        SMS(new SMS());
+
+        private final Envio envio;
+
+        CanalEnvio(Envio envio) {
+            this.envio = envio;
+        }
+
+        public void enviar(Cupom cupom) {
+            envio.enviar(cupom);
+        }
     }
 }
-
-

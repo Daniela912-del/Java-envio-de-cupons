@@ -1,4 +1,22 @@
-package PACKAGE_NAME;
+public enum Status {
 
-public enum status {
+    ATIVO("Ativo"),
+    UTILIZADO("Utilizado"),
+    EXPIRADO("Expirado"),
+    CANCELADO("Cancelado");
+
+    private final String descricao;
+
+    Status(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    @Override
+    public String toString() {
+        return descricao;
+    }
 }
